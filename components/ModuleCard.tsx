@@ -1,6 +1,6 @@
 import React from 'react'
 import Link from 'next/link'
-import { formatDistance, parseISO } from 'date-fns'
+import { formatDistanceStrict, parseISO } from 'date-fns'
 
 export interface ModuleCardProps {
   module: string
@@ -14,18 +14,22 @@ export const ModuleCard: React.FC<ModuleCardProps> = ({
   authorDate,
 }) => {
   const authorDateRel = authorDate
-    ? formatDistance(parseISO(authorDate), new Date(), { addSuffix: true })
+    ? formatDistanceStrict(parseISO(authorDate), new Date(), {
+        addSuffix: true,
+      })
     : null
 
   return (
     <Link href={`/modules/${module}`}>
       <div className="w-full h-24 border rounded flex flex-col items-center justify-center shadow-sm hover:shadow-lg">
         <div className="w-full p-4 flex justify-between">
-          <div>
-            <div className="font-bold">{module}</div>
+          <div className="w-7/12">
+            <div className="font-bold text-ellipsis" title={module}>
+              {module}
+            </div>
             <div>{version}</div>
           </div>
-          <div className="flex">
+          <div className="flex w-5/12">
             {authorDateRel && (
               <div className="text-gray-500 self-end" suppressHydrationWarning>
                 updated {authorDateRel}
