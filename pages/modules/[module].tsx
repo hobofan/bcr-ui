@@ -87,7 +87,7 @@ const ModulePage: NextPage<ModulePageProps> = ({
       <main>
         <div className="max-w-4xl w-4xl mx-auto mt-8">
           <div className="border rounded p-4 divide-y">
-            <div>
+            <div className="flex flex-wrap items-end">
               <span className="text-3xl">{module}</span>
               <span className="text-lg ml-2">{selectedVersion}</span>
             </div>
@@ -191,7 +191,7 @@ const ModulePage: NextPage<ModulePageProps> = ({
                   )}
                 </div>
               </div>
-              <div id="metadata" className="mt-4 sm:pl-2 basis-8 grow">
+              <div id="metadata" className="mt-4 sm:pl-2 basis-1/4 grow">
                 <h2 className="text-2xl font-bold mt-4">Metadata</h2>
                 <div>
                   <h3 className="font-bold text-xl mt-2">Homepage</h3>
