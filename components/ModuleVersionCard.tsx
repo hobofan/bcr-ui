@@ -2,12 +2,17 @@ import { VersionInfo } from '../data/moduleStaticProps'
 import Link from 'next/link'
 import { formatDistanceStrict, parseISO } from 'date-fns'
 import React from 'react'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCalendarDays } from '@fortawesome/free-solid-svg-icons'
+import { faFileCode } from '@fortawesome/free-regular-svg-icons'
 
 export interface ModuleVersionCardProps {
+  module: string | string[] | undefined
   version: VersionInfo
 }
 
 export const ModuleVersionCard: React.FC<ModuleVersionCardProps> = ({
+  module,
   version,
 }) => {
   return (
@@ -50,6 +55,7 @@ export const ModuleVersionCard: React.FC<ModuleVersionCardProps> = ({
                 href={`https://github.com/bazelbuild/bazel-central-registry/tree/main/modules/${module}/${version.version}`}
                 className="text-link-color hover:text-link-color-hover"
               >
+                <FontAwesomeIcon icon={faFileCode} className="mr-2" />
                 view registry source
               </a>
               <a
@@ -57,6 +63,7 @@ export const ModuleVersionCard: React.FC<ModuleVersionCardProps> = ({
                 className="text-link-color hover:text-link-color-hover"
                 suppressHydrationWarning
               >
+                <FontAwesomeIcon icon={faCalendarDays} className="mr-2" />
                 published{' '}
                 {formatDistanceStrict(
                   parseISO(version.submission.authorDateIso),

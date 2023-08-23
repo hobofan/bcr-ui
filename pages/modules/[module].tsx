@@ -122,6 +122,7 @@ const ModulePage: NextPage<ModulePageProps> = ({
                     {shownVersions.map((version) => (
                       <ModuleVersionCard
                         key={version.version}
+                        module={module}
                         version={version}
                       />
                     ))}
